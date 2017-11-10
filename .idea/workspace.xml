@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c3105ec-464c-4ca0-9850-890399f94213" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code_losy/src/Interface/Join.java" afterPath="$PROJECT_DIR$/code_losy/src/Interface/Join.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,17 +20,17 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1510292451471" expanded="true" signature="31780:31822" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31780:31840" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31780:31853" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31780:31868" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31903:32286" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31916:32271" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31951:32257" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="31970:32242" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="32044:32222" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="32084:32188" ph="..." />
-                <marker date="1510292451471" expanded="true" signature="32105:32166" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33742:33784" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33742:33802" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33742:33815" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33742:33830" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33865:34248" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33878:34233" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33913:34219" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="33932:34204" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="34006:34184" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="34046:34150" ph="..." />
+                <marker date="1510293045939" expanded="true" signature="34067:34128" ph="..." />
               </folding>
             </state>
           </provider>
@@ -40,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/code_losy/src/Interface/Join.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -106,7 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -143,9 +143,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,7 +292,7 @@
     <task active="true" id="17" summary="Interfaz Cuenta">
       <branch name="master" repository="C:\Program Files (x86)\Mozilla Firefox\gmp-clearkey\GitHub\LOSY" />
       <option name="closed" value="true" />
-      <created>1510292352086</created>
+      <created>1510293034581</created>
       <option name="issue" value="true" />
       <url>https://api.taiga.io/project/franco-lopez-losy/task/17</url>
       <option name="number" value="17" />
@@ -440,12 +440,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -461,7 +462,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -479,17 +479,53 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510292451471" expanded="true" signature="31780:31822" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31840" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31853" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31868" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31903:32286" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31916:32271" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31951:32257" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31970:32242" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32044:32222" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32084:32188" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32105:32166" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33784" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33802" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33815" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33830" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33865:34248" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33878:34233" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33913:34219" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33932:34204" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34006:34184" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34046:34150" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34067:34128" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code_losy/src/set/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/code_losy/src/Interface/Join.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1510293045939" expanded="true" signature="33742:33784" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33802" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33815" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33830" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33865:34248" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33878:34233" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33913:34219" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33932:34204" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34006:34184" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34046:34150" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34067:34128" ph="..." />
           </folding>
         </state>
       </provider>
@@ -530,17 +566,17 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1510292451471" expanded="true" signature="31780:31822" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31840" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31853" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31780:31868" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31903:32286" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31916:32271" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31951:32257" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="31970:32242" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32044:32222" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32084:32188" ph="..." />
-            <marker date="1510292451471" expanded="true" signature="32105:32166" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33784" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33802" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33815" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33742:33830" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33865:34248" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33878:34233" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33913:34219" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="33932:34204" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34006:34184" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34046:34150" ph="..." />
+            <marker date="1510293045939" expanded="true" signature="34067:34128" ph="..." />
           </folding>
         </state>
       </provider>
@@ -548,7 +584,7 @@
     <entry file="file://$PROJECT_DIR$/code_losy/src/Interface/Join.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
       </provider>
