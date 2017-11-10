@@ -13,6 +13,7 @@ public class Join extends JFrame {
     private JPasswordField TextPassword;
 
     public Join(){
+
         setVisible(true);
         setLocationRelativeTo(null);
         setSize(530,238);
