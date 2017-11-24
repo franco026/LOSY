@@ -1,6 +1,11 @@
 package Interface;
 
+import Control.Control;
+
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import Control.Control;
 
 public class Join extends JFrame {
     private JButton Accetp;
@@ -11,16 +16,20 @@ public class Join extends JFrame {
     private JLabel Logo;
     private JTextField TextAccount;
     private JPasswordField TextPassword;
+    Control control = new Control();
 
     public Join(){
+        IntComponent();
+    }
 
-        setVisible(true);
-        setLocationRelativeTo(null);
+    private void IntComponent(){
+
         setSize(530,238);
-        setResizable(false);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setTitle("Ingreso");
+        setVisible(true);
 
         Icon IcoLogo = new ImageIcon(getClass().getResource("/Image/Logo.png"));
 
@@ -55,8 +64,59 @@ public class Join extends JFrame {
         Logo.setBounds(229,11,280,175);
 
         Accetp.setBounds(21,148,90,26);
+        Accetp.setToolTipText("Ingresa al sistema");
         Cancel.setBounds(130,148,90,26);
+        Cancel.setToolTipText("Salir del sistema");
 
+        Accetp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AccetpActionPerformed(e);
+
+            }
+
+        });
+
+    }
+
+    private void AccetpActionPerformed(ActionEvent event){
+
+        int code;
+        String password;
+        password= TextPassword.getText();
+        code=Integer.parseInt(TextAccount.getText());
+        System.out.print(password);
+        if(!control.check(password,code)){
+            System.out.println("datos invalidos");
+            TextPassword.setText("");
+            TextAccount.setText("");
+        }else{
+            select_interface(control.check_position(password,code));
+        }
+    }
+
+    public void select_interface(String Interface){
+        System.out.print(Interface);
+        switch (Interface){
+            case "Miembro de laboratorio":
+                Profile_member jfmember = new Profile_member();
+                dispose();
+                break;
+            case "Director de laboratorio":
+                Profile_Laboratorydirector jfLabdirector = new Profile_Laboratorydirector();
+                dispose();
+                break;
+            case "Coordinador de Equipos":
+                Profile_coordinator jfcoordinator = new Profile_coordinator();
+                dispose();
+                break;
+            case "Director de proyectos":
+                Profile_proyectdirector jfprodirector = new Profile_proyectdirector();
+                dispose();
+                break;
+             default:
+                 break;
+        }
 
     }
 }
