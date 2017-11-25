@@ -1,24 +1,24 @@
 package Control;
 
 import Database_access.DaoEquipment;
-import Database_access.Daomember;
-import Logic.Member;
+import Database_access.DaoUser;
+import Logic.User;
 import Logic.Equipment;
 
 import javax.swing.*;
 import java.util.Vector;
 
 public class Control {
-    Daomember daomember;
+    DaoUser daoUser;
     DaoEquipment daoequipment;
 
     public Control(){
-        daomember=new Daomember();
+        daoUser =new DaoUser();
         daoequipment = new DaoEquipment();
     }
 
     public int  insertmember (String  name, String lastname,int code, String email, String position, String proyect, int document, int phone){
-        Member datamember = new Member();
+        User datamember = new User();
 
         datamember.setName(name);
         datamember.setLastName(lastname);
@@ -30,18 +30,18 @@ public class Control {
         datamember.setPhone(phone);
 
 
-        int result =daomember.Savemember(datamember);
+        int result = daoUser.Savemember(datamember);
 
         return result;
 
     }
 
     public int insertAccount(int code,String password){
-        Member datamember = new Member();
+        User datamember = new User();
 
         datamember.setPassword(password);
         datamember.setCode(code);
-        int result = daomember.SaveAccount(datamember);
+        int result = daoUser.SaveAccount(datamember);
         return result;
     }
 
@@ -49,14 +49,14 @@ public class Control {
 
         boolean access;
         System.out.println("Se va a consultar un programa");
-        access = daomember.check_account(password,code);
+        access = daoUser.check_account(password,code);
         return access;
     }
 
     public String check_position(String password,int code){
         String position;
         System.out.println("Se va a consultar un programa");
-        position = daomember.check_position(password,code);
+        position = daoUser.check_position(password,code);
         return  position;
     }
 
