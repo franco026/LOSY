@@ -1,7 +1,5 @@
 package Form;
 
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.Vector;
@@ -9,9 +7,9 @@ import java.util.Vector;
 import Control.Control;
 import Database_access.DaoEquipment;
 
-public class EquipmentView extends JInternalFrame {
+public class EquipmentView extends JFrame {
 
-    private JComboBox  equipments;
+    private JComboBox equipments;
     private JRadioButton Loan;
     private JRadioButton Reserve;
     private ButtonGroup group;
@@ -24,20 +22,20 @@ public class EquipmentView extends JInternalFrame {
 
     DaoEquipment dao = new DaoEquipment();
 
-    public EquipmentView(){
-      IntComponent();
+    public EquipmentView() {
+        IntComponent();
     }
 
-    private void IntComponent(){
+    private void IntComponent() {
         setTitle("Equipos");
         setForeground(Color.RED);
         setBackground(Color.WHITE);
         getContentPane().setForeground(Color.BLACK);
         setVisible(true);
-        setSize(450,300);
+        setSize(450, 300);
         setLayout(null);
         setResizable(false);
-        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         equipments = new JComboBox();
         equipments.addItem("Seleccion....");
@@ -60,7 +58,7 @@ public class EquipmentView extends JInternalFrame {
         TextReason.addItem("Otro");
         Reason = new JLabel("Motivo Prestamo");
 
-       // add(control.fill());
+        // add(control.fill());
         add(Loan);
         add(Reserve);
         add(Accept);
@@ -68,13 +66,13 @@ public class EquipmentView extends JInternalFrame {
         add(TextReason);
         add(Scroll);
 
-       // control.fill().setBounds(12,12,142,26);
-        Scroll.setBounds(12,42,400,180);
-        Loan.setBounds(210,12,80,26);
-        Reserve.setBounds(316,12,132,26);
-        Reason.setBounds(12,230,142,26);
-        TextReason.setBounds(120,230,142,26);
-        Accept.setBounds(280,230,142,26);
+        // control.fill().setBounds(12,12,142,26);
+        Scroll.setBounds(12, 42, 400, 180);
+        Loan.setBounds(210, 12, 80, 26);
+        Reserve.setBounds(316, 12, 132, 26);
+        Reason.setBounds(12, 230, 142, 26);
+        TextReason.setBounds(120, 230, 142, 26);
+        Accept.setBounds(280, 230, 142, 26);
 
     }
 
