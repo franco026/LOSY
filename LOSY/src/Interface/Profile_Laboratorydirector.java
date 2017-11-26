@@ -3,6 +3,7 @@ package Interface;
 import Control.Control;
 import Form.EquipmentForm;
 import Form.EquipmentForm;
+import Form.ListEquipment;
 import Form.UserForm;
 import Form.UserForm;
 import java.awt.BorderLayout;
@@ -96,6 +97,11 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         Proyects.setText("Proyectos");
 
         Equipment.setText("Equipos");
+        Equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EquipmentActionPerformed(evt);
+            }
+        });
 
         Registration.setText("Registrar Equipo");
         Registration.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +264,16 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         Join jfjoin = new Join(true);
         dispose();
     }//GEN-LAST:event_SignoffActionPerformed
+
+    private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
+        ListEquipment listEqui = new ListEquipment();
+        listEqui.setSize(614, 450);
+        listEqui.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listEqui, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_EquipmentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditEquipment;
