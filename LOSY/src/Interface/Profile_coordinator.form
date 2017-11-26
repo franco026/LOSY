@@ -123,7 +123,7 @@
                               <Component id="Reports" alignment="1" min="-2" pref="134" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="panelResultadoOperacion" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelResultOperation" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="logoUV" min="-2" max="-2" attributes="0"/>
@@ -166,7 +166,7 @@
                           <Component id="Reports" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="panelResultadoOperacion" max="32767" attributes="0"/>
+                      <Component id="panelResultOperation" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelInferior" min="-2" max="-2" attributes="0"/>
@@ -236,7 +236,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportsActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JPanel" name="panelResultadoOperacion">
+        <Container class="javax.swing.JPanel" name="panelResultOperation">
 
           <Layout>
             <DimensionLayout dim="0">

@@ -2,9 +2,13 @@ package Interface;
 
 import Control.Control;
 import Form.EquipmentForm;
+import Form.EquipmentForm;
 import Form.UserForm;
+import Form.UserForm;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import static java.time.Clock.system;
 import javax.swing.JDesktopPane;
 
 public class Profile_Laboratorydirector extends javax.swing.JFrame {
@@ -12,7 +16,7 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
     UserForm jifUserForm = new UserForm();
     EquipmentForm jifEquipmentForm = new EquipmentForm();
     Control control = new Control();
-    private JDesktopPane InterWindows;
+    //private JDesktopPane InterWindows;
     
     public Profile_Laboratorydirector() {
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,7 +45,7 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         Newmember = new javax.swing.JButton();
         Members = new javax.swing.JButton();
         EditMembers = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panelResultOperation = new javax.swing.JPanel();
         Option = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         Signoff = new javax.swing.JMenuItem();
@@ -51,7 +55,6 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Perfil Director de Laboratorio");
-        setPreferredSize(new java.awt.Dimension(840, 700));
         setResizable(false);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
@@ -114,14 +117,14 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
 
         EditMembers.setText("Editar Miembros");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelResultOperationLayout = new javax.swing.GroupLayout(panelResultOperation);
+        panelResultOperation.setLayout(panelResultOperationLayout);
+        panelResultOperationLayout.setHorizontalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelResultOperationLayout.setVerticalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -145,8 +148,8 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                             .addComponent(Newmember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EditMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFondoLayout.createSequentialGroup()
                         .addComponent(logoUV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
@@ -184,7 +187,7 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EditMembers)
                         .addGap(0, 19, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -232,17 +235,23 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
     }//GEN-LAST:event_EditProfileActionPerformed
 
     private void NewmemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewmemberActionPerformed
-        if (control.ALoneAWindow(jifUserForm, InterWindows)) {
-            InterWindows.add(jifUserForm);
-        }
-        jifUserForm.show();
+        UserForm panelUser =new UserForm();
+        panelUser.setSize(504, 444);
+        panelUser.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(panelUser, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
     }//GEN-LAST:event_NewmemberActionPerformed
 
     private void RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationActionPerformed
-        if (control.ALoneAWindow(jifEquipmentForm, InterWindows)) {
-            InterWindows.add(jifEquipmentForm);
-        }
-        jifEquipmentForm.show();
+        EquipmentForm panelEquipment =new EquipmentForm();
+        panelEquipment.setSize(565, 403);
+        panelEquipment.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(panelEquipment, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint(); 
     }//GEN-LAST:event_RegistrationActionPerformed
 
     private void SignoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoffActionPerformed
@@ -267,11 +276,11 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
     private javax.swing.JButton Registration;
     private javax.swing.JMenuItem Signoff;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logoLaboratorio;
     private javax.swing.JLabel logoUV;
     private javax.swing.JLabel logoUVInferior;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelInferior;
+    private javax.swing.JPanel panelResultOperation;
     // End of variables declaration//GEN-END:variables
 }

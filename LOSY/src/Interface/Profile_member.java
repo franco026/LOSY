@@ -214,10 +214,7 @@ public class Profile_member extends javax.swing.JFrame {
     }//GEN-LAST:event_ProyectsActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        if (control.ALoneAWindow(JifEquipment, InterWindows)) {
-            InterWindows.add(JifEquipment);
-        }
-        JifEquipment.show();;
+        
     }//GEN-LAST:event_EquipmentActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
