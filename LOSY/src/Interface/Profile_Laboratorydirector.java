@@ -4,6 +4,7 @@ import Control.Control;
 import Form.EquipmentForm;
 import Form.EquipmentForm;
 import Form.ListEquipment;
+import Form.ListMembers;
 import Form.UserForm;
 import Form.UserForm;
 import java.awt.BorderLayout;
@@ -120,6 +121,11 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         });
 
         Members.setText("Miembros");
+        Members.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MembersActionPerformed(evt);
+            }
+        });
 
         EditMembers.setText("Editar Miembros");
 
@@ -274,6 +280,16 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         panelResultOperation.revalidate();
         panelResultOperation.repaint();
     }//GEN-LAST:event_EquipmentActionPerformed
+
+    private void MembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MembersActionPerformed
+        ListMembers listMem = new ListMembers();
+        listMem.setSize(614, 450);
+        listMem.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listMem, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_MembersActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditEquipment;
