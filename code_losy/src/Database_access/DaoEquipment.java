@@ -18,12 +18,12 @@ public class DaoEquipment {
         System.setErr(System.out);
     }
 
-    public int insertequipment(Equipment equipment){
+    public int insertEquipment(Equipment equipment){
         String sql;
         int numFilas=0;
 
         sql="INSERT INTO Equipos VALUES ('" +
-                equipment.getEquipmentnumber() +  "', '" +equipment.getEquipmentname() +  "', '" +
+                equipment.getEquipmentNumber() +  "', '" + equipment.getEquipmentName() +  "', '" +
                 equipment.getMake() + "', '" + equipment.getDescription() + "', '" +
                 equipment.getState()  +  "'" +
                 ")";
@@ -70,4 +70,75 @@ public class DaoEquipment {
         return null;
     }
 
+
+    public Equipment readEquipment(int equipmentNumber){
+        Equipment equipment= new Equipment();
+        String sql_select;
+        sql_select="SELECT numero_equipo, nombre_equipo, marca, descripcion, estado FROM  equipos WHERE numero_equipo='" + equipmentNumber +  "'";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("consultando en la bd");
+            Statement sentencia = conn.createStatement();
+            ResultSet tabla = sentencia.executeQuery(sql_select);
+
+            while(tabla.next()){
+
+                equipment.setEquipmentNumber(tabla.getInt(1));
+                equipment.setEquipmentName(tabla.getString(2));
+                equipment.setMake(tabla.getInt(3));
+                equipment.setDescription(tabla.getString(4));
+                equipment.setState(tabla.getInt(5));
+
+                System.out.println("ok");
+            }
+
+            return equipment;
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        return null;
+    }
+
+    public Equipment deleteEquipment(int equipmentNumber){
+        Equipment equipment= new Equipment();
+        String sql_delete;
+        sql_delete="DELETE FROM equipos WHERE numero_equipo='" + equipmentNumber +  "'";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("consultando en la bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_delete);
+
+            return equipment;
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        return null;
+    }
+
+    public int updateEquipment(Equipment equipment){
+        String sql_Up;
+        int numFilas=0;
+
+        sql_Up="UPDATE equipos SET nombre_equipo = '" + equipment.getEquipmentName() + "', marca = '" + equipment.getMake() +
+                "' , descripcion = " + equipment.getDescription() +  "' , estado = " +equipment.getState()+
+                " WHERE numero_equipo = '" + equipment.getEquipmentNumber() + "' ;" ;
+
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_Up);
+            System.out.println("up " + numFilas);
+            return numFilas;
+
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return -1;
+    }
 }
