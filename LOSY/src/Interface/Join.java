@@ -26,10 +26,10 @@ public class Join extends javax.swing.JFrame {
         account = new javax.swing.JLabel();
         textAccount = new javax.swing.JTextField();
         password = new javax.swing.JLabel();
-        textPassword = new javax.swing.JTextField();
         remember = new javax.swing.JLabel();
         Accept = new javax.swing.JButton();
         Cancel = new javax.swing.JButton();
+        textPassword = new javax.swing.JPasswordField();
 
         jLabel1.setText("jLabel1");
 
@@ -56,12 +56,6 @@ public class Join extends javax.swing.JFrame {
         password.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         password.setText("Contraseña");
 
-        textPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPasswordActionPerformed(evt);
-            }
-        });
-
         remember.setText("<html><u>Recordar Contraseña<u><html>");
 
         Accept.setText("Aceptar");
@@ -85,19 +79,19 @@ public class Join extends javax.swing.JFrame {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(password))
-                    .addGroup(panelFondoLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(textAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(remember, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(123, 123, 123)
+                        .addComponent(remember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(Accept, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(51, 51, 51)
                 .addComponent(logoLOSY)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -112,12 +106,12 @@ public class Join extends javax.swing.JFrame {
                 .addGap(57, 57, 57)
                 .addComponent(account, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addComponent(textAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(password)
-                .addGap(18, 18, 18)
-                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
                 .addComponent(remember, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,10 +137,6 @@ public class Join extends javax.swing.JFrame {
     private void textAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAccountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textAccountActionPerformed
-
-    private void textPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPasswordActionPerformed
 
     private void AcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptActionPerformed
         int code;
@@ -198,6 +188,6 @@ public class Join extends javax.swing.JFrame {
     private javax.swing.JLabel password;
     private javax.swing.JLabel remember;
     private javax.swing.JTextField textAccount;
-    private javax.swing.JTextField textPassword;
+    private javax.swing.JPasswordField textPassword;
     // End of variables declaration//GEN-END:variables
 }

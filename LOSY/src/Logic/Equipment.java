@@ -24,6 +24,11 @@ public class Equipment {
         return encabezado.length;
     }
     
+    @Override
+    public String toString(){
+        return equipmentName;
+    }
+    
     public int getNumeroEquipo() {
         return numeroEquipo;
     }
