@@ -8,7 +8,8 @@ public class Proyect {
         private int directorCode;
 
 
-    public Proyect(){}
+    public Proyect(){
+    }
 
     public void setId (int id){
         this.id=id;
