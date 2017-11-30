@@ -2,16 +2,11 @@ package Interface;
 
 import Control.Control;
 import Form.EquipmentForm;
-import Form.EquipmentForm;
 import Form.ListEquipment;
 import Form.ListMembers;
 import Form.UserForm;
-import Form.UserForm;
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import static java.time.Clock.system;
-import javax.swing.JDesktopPane;
 
 public class Profile_Laboratorydirector extends javax.swing.JFrame {
 
