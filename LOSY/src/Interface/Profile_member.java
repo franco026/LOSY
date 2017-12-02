@@ -2,6 +2,7 @@ package Interface;
 
 import Control.Control;
 import Form.ListEquipment;
+import Form.ListProyects;
 import Logic.Equipment;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -175,6 +176,11 @@ public class Profile_member extends javax.swing.JFrame {
         Menu.add(Signoff);
 
         Exit.setText("Salir");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
         Menu.add(Exit);
 
         Option.add(Menu);
@@ -212,7 +218,13 @@ public class Profile_member extends javax.swing.JFrame {
     }//GEN-LAST:event_SignoffActionPerformed
 
     private void ProyectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProyectsActionPerformed
-        // TODO add your handling code here:
+        ListProyects listPro = new ListProyects();
+        listPro.setSize(614, 450);
+        listPro.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listPro, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
     }//GEN-LAST:event_ProyectsActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
@@ -224,6 +236,10 @@ public class Profile_member extends javax.swing.JFrame {
         panelResultOperation.revalidate();
         panelResultOperation.repaint();
     }//GEN-LAST:event_EquipmentActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

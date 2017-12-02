@@ -206,6 +206,7 @@ public class UserForm extends javax.swing.JPanel {
     }//GEN-LAST:event_textPhoneActionPerformed
 
     private void addUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserActionPerformed
+
         String name, lastname, email, position, proyect, password;
         int code, phone, document;
 
@@ -217,19 +218,16 @@ public class UserForm extends javax.swing.JPanel {
         proyect = textProyect.getText();
         document = Integer.parseInt(textDocument.getText());
         phone = Integer.parseInt(textPhone.getText());
-
         password = PasswordDefault(name, lastname, textCode.getText());
-        System.out.println(password);
 
-        int numFilas = control.insertmember(name, lastname, code, email, position, proyect, document, phone);
+        int numFilas = control.insertarMiembro(name, lastname, code, email, position, proyect, document, phone);
         int numFilas2 = control.insertAccount(code, password);
-
-        System.out.println("Filas " + numFilas);
+        JOptionPane.showMessageDialog(null, numFilas +" "+ numFilas2 );
         if (numFilas == 1 && numFilas2 == 1) {
 
-            JOptionPane.showMessageDialog(null, "Programa guardado exitosamente");
+            JOptionPane.showMessageDialog(null, "Usuario guardado exitosamente");
         } else {
-            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Programa");
+            JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Usuario");
         }
     }//GEN-LAST:event_addUserActionPerformed
 

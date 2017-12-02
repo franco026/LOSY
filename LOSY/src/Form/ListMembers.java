@@ -6,7 +6,7 @@
 package Form;
 
 import Database_access.DaoEquipment;
-import Database_access.Daomember;
+import Database_access.DaoUser;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,7 +36,7 @@ public class ListMembers extends javax.swing.JPanel {
         //jTableEquipment.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         jTableMembers.getTableHeader().setReorderingAllowed(false);
 
-        Daomember equipmentDao = new Daomember();
+        DaoUser equipmentDao = new DaoUser();
         equipmentDao.consultarMiembro(model);
         jScrollPane1.setViewportView(jTableMembers);
     }

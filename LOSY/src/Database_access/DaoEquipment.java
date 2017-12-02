@@ -127,5 +127,57 @@ public class DaoEquipment {
         }
        return equi;
     }
+    
+    public int guardarEquipo(Equipment p){
+        String sql_guardar;
+        int numFilas=0;
+
+        sql_guardar="INSERT INTO equipos (nombre_equipo,marca, descripcion, estado) VALUES ('" +
+                p.getEquipmentname() + "', '" + p.getMake() +  "', '" +
+                p.getDescription() + "', '0')";
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_guardar);            
+            System.out.println("up " + numFilas);
+            return numFilas;
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
+            System.out.println(e);
+        }
+        return -1;
+    }
+    
+    public int editarEquipo(int estado, String ev){
+        String sql_select;
+        int numFilas=0;
+        String sqlUp=" ";
+        sql_select="UPDATE equipos SET estado = "+ estado+
+                " WHERE numero_equipo = '" + ev + "'";
+        
+        System.out.print("SQL = "+ sqlUp);
+        //JOptionPane.showMessageDialog(null, sqlUp);
+       try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+
+            numFilas = sentencia.executeUpdate(sql_select);            
+            System.out.println("up " + numFilas);
+            return numFilas;
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
+            System.out.println(e);
+        }
+        return -1;
+    }
 
 }

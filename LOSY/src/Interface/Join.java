@@ -3,6 +3,7 @@ package Interface;
 import Control.Control;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 public class Join extends javax.swing.JFrame {
 
@@ -66,6 +67,11 @@ public class Join extends javax.swing.JFrame {
         });
 
         Cancel.setText("Cancelar");
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -143,15 +149,23 @@ public class Join extends javax.swing.JFrame {
         String password;
         password = textPassword.getText();
         code = Integer.parseInt(textAccount.getText());
-        System.out.print(password);
+        //JOptionPane.showMessageDialog(null, password+ " "+ code);
         if (!control.check(password, code)) {
-            System.out.println("datos invalidos");
+            JOptionPane.showMessageDialog(null, "Datos invalidos.");
             textPassword.setText("");
             textAccount.setText("");
+            //JOptionPane.showMessageDialog(null, "Bienvenido a LOSY.");
+            //select_interface(control.check_position(password, code));
         } else {
+            JOptionPane.showMessageDialog(null, "Bienvenido a LOSY.");
             select_interface(control.check_position(password, code));
+            
         }
     }//GEN-LAST:event_AcceptActionPerformed
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_CancelActionPerformed
 
     public void select_interface(String Interface) {
         System.out.print(Interface);

@@ -1,6 +1,8 @@
 package Interface;
 
 import Control.Control;
+import Form.ListEquipment;
+import Form.ListProyects;
 import Form.ProyectForm;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -87,8 +89,18 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
         Members.setText("Miembros");
 
         Proyects.setText("Proyectos");
+        Proyects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProyectsActionPerformed(evt);
+            }
+        });
 
         Equipment.setText("Equipos");
+        Equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EquipmentActionPerformed(evt);
+            }
+        });
 
         Registration.setText("Nuevo Proyecto");
         Registration.addActionListener(new java.awt.event.ActionListener() {
@@ -107,11 +119,11 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
         panelResultOperation.setLayout(panelResultOperationLayout);
         panelResultOperationLayout.setHorizontalGroup(
             panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 615, Short.MAX_VALUE)
         );
         panelResultOperationLayout.setVerticalGroup(
             panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
@@ -121,7 +133,7 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
             .addComponent(panelInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFondoLayout.createSequentialGroup()
+                    .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -133,9 +145,9 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
                             .addComponent(EditProyect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EquipmentLoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Reports, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(49, 49, 49)
-                        .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFondoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelResultOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(logoUV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                         .addComponent(logoLaboratorio)))
@@ -149,11 +161,11 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(logoLaboratorio)))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EditProfile)
                         .addGap(26, 26, 26)
                         .addComponent(Members)
@@ -172,7 +184,7 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
                         .addGap(51, 51, 51))
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(panelResultOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
                 .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -187,6 +199,11 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
         Menu.add(Signoff);
 
         Exit.setText("Salir");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
         Menu.add(Exit);
 
         Option.add(Menu);
@@ -232,6 +249,30 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
         Join joifn = new Join(true);
         dispose();
     }//GEN-LAST:event_SignoffActionPerformed
+
+    private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
+        ListEquipment listEqui = new ListEquipment();
+        listEqui.setSize(614, 450);
+        listEqui.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listEqui, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_EquipmentActionPerformed
+
+    private void ProyectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProyectsActionPerformed
+        ListProyects listPro = new ListProyects();
+        listPro.setSize(614, 450);
+        listPro.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listPro, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_ProyectsActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditProfile;

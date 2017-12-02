@@ -2,6 +2,7 @@ package Interface;
 
 import Control.Control;
 import Form.EquipmentForm;
+import Form.ListEquipment;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 import java.awt.Dimension;
@@ -78,6 +79,11 @@ public class Profile_coordinator extends javax.swing.JFrame {
         EquipmentLoan.setText("Solicitar Equipo");
 
         Equipment.setText("Equipos");
+        Equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EquipmentActionPerformed(evt);
+            }
+        });
 
         Registration.setText("Registrar Equipos");
         Registration.addActionListener(new java.awt.event.ActionListener() {
@@ -185,9 +191,9 @@ public class Profile_coordinator extends javax.swing.JFrame {
                         .addComponent(Fines)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Reports)
-                        .addGap(0, 48, Short.MAX_VALUE))
+                        .addGap(0, 97, Short.MAX_VALUE))
                     .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -242,7 +248,7 @@ public class Profile_coordinator extends javax.swing.JFrame {
     }//GEN-LAST:event_SignoffActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        
+        System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
 
     private void EditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProfileActionPerformed
@@ -266,6 +272,16 @@ public class Profile_coordinator extends javax.swing.JFrame {
         panelResultOperation.revalidate();
         panelResultOperation.repaint();         
     }//GEN-LAST:event_RegistrationActionPerformed
+
+    private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
+        ListEquipment listEqui = new ListEquipment();
+        listEqui.setSize(614, 450);
+        listEqui.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listEqui, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_EquipmentActionPerformed
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditEquipment;

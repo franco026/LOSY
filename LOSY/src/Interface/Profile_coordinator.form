@@ -164,11 +164,11 @@
                           <Component id="Fines" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Reports" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
                       </Group>
                       <Component id="panelResultOperation" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="panelInferior" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -206,6 +206,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Equipos"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EquipmentActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="Registration">
           <Properties>

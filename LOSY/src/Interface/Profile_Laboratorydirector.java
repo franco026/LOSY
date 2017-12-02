@@ -4,6 +4,7 @@ import Control.Control;
 import Form.EquipmentForm;
 import Form.ListEquipment;
 import Form.ListMembers;
+import Form.ListProyects;
 import Form.UserForm;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -91,6 +92,11 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         EquipmentLoan.setText("Solicitar Equipo");
 
         Proyects.setText("Proyectos");
+        Proyects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProyectsActionPerformed(evt);
+            }
+        });
 
         Equipment.setText("Equipos");
         Equipment.addActionListener(new java.awt.event.ActionListener() {
@@ -210,6 +216,11 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         Menu.add(Signoff);
 
         Exit.setText("Salir");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
         Menu.add(Exit);
 
         Option.add(Menu);
@@ -285,6 +296,20 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         panelResultOperation.revalidate();
         panelResultOperation.repaint();
     }//GEN-LAST:event_MembersActionPerformed
+
+    private void ProyectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProyectsActionPerformed
+        ListProyects listPro = new ListProyects();
+        listPro.setSize(614, 450);
+        listPro.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listPro, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_ProyectsActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditEquipment;

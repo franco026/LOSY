@@ -119,6 +119,7 @@ public class EquipmentForm extends javax.swing.JPanel {
     }//GEN-LAST:event_textSerialUActionPerformed
 
     private void EquipmentAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentAddActionPerformed
+
         int serialUV;
         
         String equipmentName, description;
@@ -126,8 +127,9 @@ public class EquipmentForm extends javax.swing.JPanel {
         serialUV = Integer.parseInt(textSerialU.getText());
         equipmentName = textNameEquipment.getText();
         description = textDescription.getText();
+        int estado =0;
 
-        int numFilas = control.insertequipment(equipmentName, serialUV, description);
+        int numFilas = control.insertarEquipo(equipmentName, serialUV, description, estado);
 
         System.out.println("Filas " + numFilas);
         if (numFilas == 1) {

@@ -1,14 +1,15 @@
 package Database_access;
 
-import Logic.Member;
+import Logic.User;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class Daomember {
+public class DaoUser {
 
     FacadeBD fachada;
 
-    public Daomember() {
+    public DaoUser() {
         fachada = new FacadeBD();
         disableWarning();
     }
@@ -17,34 +18,36 @@ public class Daomember {
         System.err.close();
         System.setErr(System.out);
     }
+    
+    public int guardarUsuario(User p){
+        String sql_guardar;
+        int numFilas=0;
 
-    public int Savemember(Member datamember) {
-        String sql;
-        int numFilas = 0;
-
-        sql = "INSERT INTO usuario VALUES ('"
-                + datamember.getCode() + "', '" + datamember.getName() + "', '"
-                + datamember.getLastName() + "', '" + datamember.getPosition() + "', '"
-                + datamember.getEmail() + "', '" + datamember.getAnswer() + "', '"
-                + datamember.getPhone() + "', '" + datamember.getDocument() + "', '"
-                 + "'"
+        sql_guardar="INSERT INTO usuario (codigo, nombre_usuario, apellido, cargo, correo, proyecto, telefono, cedula) VALUES ('"
+                + p.getCode() + "', '" + p.getName() + "', '"
+                + p.getLastName() + "', '" + p.getPosition() + "', '"
+                + p.getEmail() + "', '" + p.getProyect() + "', '"
+                + p.getPhone() + "', '" + p.getDocument() + "'"
                 + ")";
-        try {
-            Connection conx = fachada.getConnetion();
-            Statement sentence = conx.createStatement();
-
-            numFilas = sentence.executeUpdate(sql);
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            JOptionPane.showMessageDialog(null, "ERROR GUARDAR USUARIO.");
+            numFilas = sentencia.executeUpdate(sql_guardar);            
+            System.out.println("up " + numFilas);
             return numFilas;
-
-        } catch (SQLException e) {
-            System.out.println(e);
-        } catch (Exception e) {
+            
+        }
+        catch(SQLException e){
+            System.out.println(e); 
+            }
+        catch(Exception e){ 
             System.out.println(e);
         }
         return -1;
-    }//fin guardar
+    }
 
-    public int SaveAccount(Member datamember) {
+    public int SaveAccount(User datamember) {
         String sql;
         int numFilas = 0;
 
@@ -56,6 +59,7 @@ public class Daomember {
             Statement sentence = conx.createStatement();
 
             numFilas = sentence.executeUpdate(sql);
+            conx.close();
             return numFilas;
 
         } catch (SQLException e) {
@@ -67,7 +71,7 @@ public class Daomember {
     }//fin guardar
 
     public void consultarMiembro(DefaultTableModel model){
-    	Member p= new Member();
+    	User p= new User();
         String sql_select;
         sql_select="SELECT * FROM  usuario";// Where nombre_equipo LIKE '" + indi + "%'";
        
@@ -94,18 +98,20 @@ public class Daomember {
     }
     
     public boolean check_account(String password, int code) {
-        Member member = new Member();
+        User member = new User();
         String sql;
-        sql = "SELECT * FROM Cuenta WHERE codigo_usuario='" + code + "'";
+        sql = "SELECT codigo_usuario, password FROM cuenta WHERE codigo_usuario='" + code + "'";
+        //JOptionPane.showMessageDialog(null, password+" "+code);
         try {
             Connection conx = fachada.getConnetion();
             Statement sentencia = conx.createStatement();
             ResultSet tabla = sentencia.executeQuery(sql);
             while (tabla.next()) {
-
                 member.setCode(tabla.getInt(1));
                 member.setPassword(tabla.getString(2));
+                
             }
+            //JOptionPane.showMessageDialog(null, member.getCode()+ " "+ member.getPassword());
             if (member.getCode() == code && member.getPassword().equals(password)) {
                 return true;
             } else {
@@ -122,7 +128,7 @@ public class Daomember {
     }
 
     public String check_position(String password, int code) {
-        Member member = new Member();
+        User member = new User();
         String sql;
         sql = "SELECT * FROM usuario WHERE codigo='" + code + "'";
         try {
@@ -133,6 +139,7 @@ public class Daomember {
             while (potision.next()) {
                 member.setPosition(potision.getString(4));
             }
+            //JOptionPane.showMessageDialog(null, member.getPosition());
             return member.getPosition();
 
         } catch (SQLException e) {
