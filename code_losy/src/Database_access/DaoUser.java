@@ -116,6 +116,4 @@ public class DaoUser {
 
         return null;
     }
-
-    
 }

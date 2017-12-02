@@ -9,7 +9,6 @@ import java.awt.Toolkit;
 
 public class Profile_coordinator extends javax.swing.JFrame {
 
-    EquipmentForm jifEquipment = new EquipmentForm();
     Control control = new Control();
     private JDesktopPane InterWindows;
     
@@ -36,7 +35,7 @@ public class Profile_coordinator extends javax.swing.JFrame {
         EditEquipment = new javax.swing.JButton();
         Fines = new javax.swing.JButton();
         Reports = new javax.swing.JButton();
-        panelResultadoOperacion = new javax.swing.JPanel();
+        panelResultOperation = new javax.swing.JPanel();
         logoLaboratorio = new javax.swing.JLabel();
         panelInferior = new javax.swing.JPanel();
         logoUVInferior = new javax.swing.JLabel();
@@ -103,14 +102,14 @@ public class Profile_coordinator extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelResultadoOperacionLayout = new javax.swing.GroupLayout(panelResultadoOperacion);
-        panelResultadoOperacion.setLayout(panelResultadoOperacionLayout);
-        panelResultadoOperacionLayout.setHorizontalGroup(
-            panelResultadoOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelResultOperationLayout = new javax.swing.GroupLayout(panelResultOperation);
+        panelResultOperation.setLayout(panelResultOperationLayout);
+        panelResultOperationLayout.setHorizontalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 643, Short.MAX_VALUE)
         );
-        panelResultadoOperacionLayout.setVerticalGroup(
-            panelResultadoOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelResultOperationLayout.setVerticalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -152,7 +151,7 @@ public class Profile_coordinator extends javax.swing.JFrame {
                             .addComponent(Fines, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Reports, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(panelResultadoOperacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelResultOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(logoUV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,7 +186,7 @@ public class Profile_coordinator extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Reports)
                         .addGap(0, 48, Short.MAX_VALUE))
-                    .addComponent(panelResultadoOperacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -259,27 +258,15 @@ public class Profile_coordinator extends javax.swing.JFrame {
     }//GEN-LAST:event_FinesActionPerformed
 
     private void RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationActionPerformed
-        if (control.ALoneAWindow(jifEquipment, InterWindows)) {
-            InterWindows.add(jifEquipment);
-        }
-        jifEquipment.show();
+        EquipmentForm panelEquipment =new EquipmentForm();
+        panelEquipment.setSize(403, 378);
+        panelEquipment.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(panelEquipment, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();         
     }//GEN-LAST:event_RegistrationActionPerformed
-  
-    public void setLocationCenter(){
-        setLocationMove(0, 0);
-    }
-    
-    public void setLocationMove(int moveWidth, int moveHeight) {
-        // Obtenemos el tamaño de la pantalla.
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        // Obtenemos el tamaño de nuestro frame.
-        Dimension frameSize = this.getSize();
-        frameSize.width = frameSize.width > screenSize.width?screenSize.width:frameSize.width;
-        frameSize.height = frameSize.height > screenSize.height?screenSize.height:frameSize.height;   
-        // Definimos la localización.
-        setLocation((screenSize.width - frameSize.width) / 2 + moveWidth, (screenSize.height - frameSize.height) / 2 + moveHeight);        
-    }
-    
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditEquipment;
     private javax.swing.JButton EditProfile;
@@ -301,6 +288,6 @@ public class Profile_coordinator extends javax.swing.JFrame {
     private javax.swing.JLabel logoUVInferior;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelInferior;
-    private javax.swing.JPanel panelResultadoOperacion;
+    private javax.swing.JPanel panelResultOperation;
     // End of variables declaration//GEN-END:variables
 }

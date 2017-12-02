@@ -219,10 +219,13 @@ public class Profile_proyectdirector extends javax.swing.JFrame {
     }//GEN-LAST:event_EditProfileActionPerformed
 
     private void RegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationActionPerformed
-        if (control.ALoneAWindow(jifProyectForm, InterWindows)) {
-            InterWindows.add(jifProyectForm);
-        }
-        jifProyectForm.show();
+        ProyectForm panelProyect =new ProyectForm();
+        panelProyect.setSize(584, 392);
+        panelProyect.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(panelProyect, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
     }//GEN-LAST:event_RegistrationActionPerformed
 
     private void SignoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoffActionPerformed

@@ -1,16 +1,18 @@
 package Interface;
 
 import Control.Control;
-import Form.EquipmentView;
-import javax.swing.JDesktopPane;
+import Form.ListEquipment;
+import Logic.Equipment;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.DefaultListModel;
 
 public class Profile_member extends javax.swing.JFrame {
 
-    EquipmentView JifEquipment = new EquipmentView();
     Control control = new Control();
-    private JDesktopPane InterWindows;
+    DefaultListModel modelo = new DefaultListModel();
+    Equipment team = new Equipment();
+    
     
     public Profile_member() {
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,7 +43,7 @@ public class Profile_member extends javax.swing.JFrame {
         EquipmentLoan = new javax.swing.JButton();
         Proyects = new javax.swing.JButton();
         Equipment = new javax.swing.JButton();
-        panelResultadoOperacion = new javax.swing.JPanel();
+        panelResultOperation = new javax.swing.JPanel();
         Option = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         Signoff = new javax.swing.JMenuItem();
@@ -102,15 +104,15 @@ public class Profile_member extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelResultadoOperacionLayout = new javax.swing.GroupLayout(panelResultadoOperacion);
-        panelResultadoOperacion.setLayout(panelResultadoOperacionLayout);
-        panelResultadoOperacionLayout.setHorizontalGroup(
-            panelResultadoOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelResultOperationLayout = new javax.swing.GroupLayout(panelResultOperation);
+        panelResultOperation.setLayout(panelResultOperationLayout);
+        panelResultOperationLayout.setHorizontalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 613, Short.MAX_VALUE)
         );
-        panelResultadoOperacionLayout.setVerticalGroup(
-            panelResultadoOperacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        panelResultOperationLayout.setVerticalGroup(
+            panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
@@ -129,7 +131,7 @@ public class Profile_member extends javax.swing.JFrame {
                             .addComponent(Proyects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(36, 36, 36)
-                        .addComponent(panelResultadoOperacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addComponent(logoUV)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
@@ -156,8 +158,8 @@ public class Profile_member extends javax.swing.JFrame {
                         .addComponent(Proyects)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Equipment)
-                        .addGap(0, 145, Short.MAX_VALUE))
-                    .addComponent(panelResultadoOperacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 175, Short.MAX_VALUE))
+                    .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -214,11 +216,15 @@ public class Profile_member extends javax.swing.JFrame {
     }//GEN-LAST:event_ProyectsActionPerformed
 
     private void EquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EquipmentActionPerformed
-        if (control.ALoneAWindow(JifEquipment, InterWindows)) {
-            InterWindows.add(JifEquipment);
-        }
-        JifEquipment.show();;
+        ListEquipment listEqui = new ListEquipment();
+        listEqui.setSize(614, 450);
+        listEqui.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(listEqui, null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
     }//GEN-LAST:event_EquipmentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EditProfile;
@@ -237,6 +243,6 @@ public class Profile_member extends javax.swing.JFrame {
     private javax.swing.JLabel logoUVInferior;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelInferior;
-    private javax.swing.JPanel panelResultadoOperacion;
+    private javax.swing.JPanel panelResultOperation;
     // End of variables declaration//GEN-END:variables
 }

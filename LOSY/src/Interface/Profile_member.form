@@ -96,7 +96,7 @@
                               <Component id="Equipment" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="panelResultadoOperacion" max="32767" attributes="0"/>
+                          <Component id="panelResultOperation" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="logoUV" min="-2" max="-2" attributes="0"/>
@@ -130,9 +130,9 @@
                           <Component id="Proyects" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Equipment" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="145" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="175" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="panelResultadoOperacion" max="32767" attributes="0"/>
+                      <Component id="panelResultOperation" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="panelInferior" min="-2" max="-2" attributes="0"/>
@@ -226,17 +226,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EquipmentActionPerformed"/>
           </Events>
         </Component>
-        <Container class="javax.swing.JPanel" name="panelResultadoOperacion">
+        <Container class="javax.swing.JPanel" name="panelResultOperation">
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="613" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="438" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
