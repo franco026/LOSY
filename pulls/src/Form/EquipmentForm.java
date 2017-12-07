@@ -35,6 +35,7 @@ public class EquipmentForm extends javax.swing.JPanel {
         EquipmentAdd = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textDescription = new javax.swing.JTextArea();
+        jButtonClearFields = new javax.swing.JButton();
 
         jLabel1.setText("Nombre del equipo:");
 
@@ -65,6 +66,13 @@ public class EquipmentForm extends javax.swing.JPanel {
         textDescription.setRows(5);
         jScrollPane1.setViewportView(textDescription);
 
+        jButtonClearFields.setText("Limpiar");
+        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearFieldsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +92,10 @@ public class EquipmentForm extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textSerialU, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textNameEquipment, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(EquipmentAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(EquipmentAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -105,7 +116,9 @@ public class EquipmentForm extends javax.swing.JPanel {
                         .addGap(0, 196, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addGap(18, 18, 18)
-                .addComponent(EquipmentAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EquipmentAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -140,9 +153,16 @@ public class EquipmentForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_EquipmentAddActionPerformed
 
+    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        textSerialU.setText("");
+        textNameEquipment.setText("");
+        textDescription.setText("");       
+    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EquipmentAdd;
+    private javax.swing.JButton jButtonClearFields;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

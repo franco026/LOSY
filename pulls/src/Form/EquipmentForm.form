@@ -35,7 +35,11 @@
                           <Component id="textNameEquipment" min="-2" pref="204" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="EquipmentAdd" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="EquipmentAdd" min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jButtonClearFields" min="-2" pref="81" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
@@ -63,7 +67,10 @@
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="EquipmentAdd" min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="EquipmentAdd" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jButtonClearFields" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -118,5 +125,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButtonClearFields">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpiar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonClearFieldsActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

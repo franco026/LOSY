@@ -82,7 +82,7 @@ public class DaoPrestamo {
         int numFilas=0;
         //JOptionPane.showMessageDialog(null,p.getCodigoUser()+" "+p.getNumeroEquipo()+" "+ p.getMarca());
         sql_guardar="INSERT INTO prestamo (codigo_usuario, numero_equipo, marca, fecha_prestamo, fecha_devolucion) VALUES ('" +
-                p.getCodigoUser()+ "', '" + p.getNumeroEquipo() +  "', '" + p.getMarca() + "', '01-12-2004', '12-12-2004' )";
+                p.getCodigoUser()+ "', '" + p.getNumeroEquipo() +  "', '" + p.getMarca() + "', '"+p.getFechaPrestamo()+"', '"+p.getFechaDevolucion()+"' )";
         try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();

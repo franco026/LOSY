@@ -37,6 +37,7 @@ public class ProyectForm extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         textDescription = new javax.swing.JTextArea();
         addProyect = new javax.swing.JButton();
+        jButtonClearFields = new javax.swing.JButton();
 
         nameProyect.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         nameProyect.setText("Nombre del proyecto:");
@@ -71,6 +72,14 @@ public class ProyectForm extends javax.swing.JPanel {
             }
         });
 
+        jButtonClearFields.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jButtonClearFields.setText("Limpiar");
+        jButtonClearFields.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonClearFieldsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,6 +104,8 @@ public class ProyectForm extends javax.swing.JPanel {
                         .addGap(41, 41, 41))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(addProyect, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -113,7 +124,9 @@ public class ProyectForm extends javax.swing.JPanel {
                     .addComponent(description)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(addProyect, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addProyect, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                    .addComponent(jButtonClearFields, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -146,11 +159,18 @@ public class ProyectForm extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_addProyectActionPerformed
 
+    private void jButtonClearFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFieldsActionPerformed
+        textCodeDirector.setText("");
+        textNameProyect.setText("");
+        textDescription.setText("");
+    }//GEN-LAST:event_jButtonClearFieldsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addProyect;
     private javax.swing.JLabel codeDirector;
     private javax.swing.JLabel description;
+    private javax.swing.JButton jButtonClearFields;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nameProyect;
     private javax.swing.JTextField textCodeDirector;

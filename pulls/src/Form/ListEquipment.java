@@ -2,6 +2,9 @@ package Form;
 
 import Control.Control;
 import Database_access.DaoEquipment;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -212,11 +215,20 @@ public class ListEquipment extends javax.swing.JPanel {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         DaoEquipment equipmentDao = new DaoEquipment();
+        Calendar calendario = new GregorianCalendar();
+        //JOptionPane.showMessageDialog(null, dia+"-"+mes+"-"+año);
         if(opc == solicitar.getLabel()){
             if(estado.equals("Disponible")){
                 estado = "Prestado";
                 equipmentDao.editarEquipo(estado, select);
-                int numFilas = control.insertarPrestamo(key, numEquipo, marc);
+                int dia = calendario.get(Calendar.DATE);
+                int mes = calendario.get(Calendar.MONTH)+1;
+                int año = calendario.get(Calendar.YEAR);
+                String date = dia+"-"+mes+"-"+año;
+                calendario.add(Calendar.DAY_OF_MONTH, 7);
+                int diaDevolucion = calendario.get(Calendar.DAY_OF_MONTH);
+                String dateDev = diaDevolucion+"-"+mes+"-"+año;
+                int numFilas = control.insertarPrestamo(key, numEquipo, marc, date, dateDev);
 
         System.out.println("Filas " + numFilas);
         if (numFilas == 1) {

@@ -150,12 +150,14 @@ public class Control {
 
     }
     
-    public int insertarPrestamo(int key, int num, int marc){
+    public int insertarPrestamo(int key, int num, int marc, String date, String dateDev){
         Loan pres = new Loan();
         
         pres.setCodigoUser(key);
         pres.setNumeroEquipo(num);
         pres.setMarca(marc);
+        pres.setFechaPrestamo(date);
+        pres.setFechaDevolucion(dateDev);
         
         int result = daoPrestamo.guardarPrestamo(pres);
         

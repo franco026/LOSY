@@ -6,8 +6,8 @@ public class Loan {
     private int codigoUser;
     private int numeroEquipo;
     private int marca;
-    private Date fechaPrestamo;
-    private Date fechaDevolucion;
+    private String fechaPrestamo;
+    private String fechaDevolucion;
     private String[] encabezado = {"codigo_usuario", "numero_equipo", "marca", "fecha_prestamo", "fecha_devolucion"};
     
     public Loan() {
@@ -25,11 +25,11 @@ public class Loan {
         return marca;
     }
     
-    public Date getFechaPrestamo(){
+    public String getFechaPrestamo(){
         return fechaPrestamo;
     }
     
-    public Date getFechaDevolucion(){
+    public String getFechaDevolucion(){
         return fechaDevolucion;
     }
     
@@ -45,11 +45,11 @@ public class Loan {
         this.marca = marca;
     }
     
-    public void setFechaPrestamo(Date fecha){
+    public void setFechaPrestamo(String fecha){
         this.fechaPrestamo = fecha;
     }
     
-    public void setFechaDevolucion(Date fecha){
+    public void setFechaDevolucion(String fecha){
         this.fechaDevolucion = fecha;
     }
 }
