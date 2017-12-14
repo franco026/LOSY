@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Interface.Join;
 import com.sun.glass.events.KeyEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +17,9 @@ public class Validation {
     
    public Validation(){}
     
+   public void inicio(){
+        Join jfjoin = new Join();
+   }
     public boolean isEmail(String account){
         Pattern pat = null;
         Matcher mat = null;

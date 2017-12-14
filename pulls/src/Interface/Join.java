@@ -1,30 +1,46 @@
 package Interface;
 
 import Control.ControlUser;
+import Database_access.DaoLoan;
 import Database_access.DaoUser;
 import Form.NewPassword;
 import Logic.User;
 import java.awt.Dimension;
-import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 import javax.swing.JFrame;
-import static javax.swing.JOptionPane.CANCEL_OPTION;
-import static javax.swing.JOptionPane.YES_OPTION;
 
 public class Join extends javax.swing.JFrame {
 
     ControlUser control = new ControlUser();
     DaoUser userDao= new DaoUser();
+    DaoLoan loanDao = new DaoLoan();
+    private String dateve,dateresve,date,dateres  ;
     int code;
+    boolean exit;
     public Join() {
+        Calendar calendario = new GregorianCalendar();
+        int dia = calendario.get(Calendar.DATE);
+        int mes = calendario.get(Calendar.MONTH)+1;
+        int año = calendario.get(Calendar.YEAR);
+        date = dia+""+mes+""+año;
+        dateve = dia+"-"+mes+"-"+año;
+        dateresve=  (dia+3)+"-"+mes+"-"+año;
+        dateres=  (dia+3)+""+mes+""+año;
+        
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension ventana = this.getSize();
+        
         this.setLocation((pantalla.width - ventana.width) / 4 , (pantalla.height - ventana.height) / 4 ); 
         this.setVisible(true);
         initComponents();
+        verificarmulta();
+        verificarreserva();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -163,11 +179,27 @@ public class Join extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void verificarreserva(){
+       
+        loanDao.verificarreserva(Integer.parseInt(date));
+    }
+    
+    private void verificarmulta(){
+        loanDao.verifirmulta(Integer.parseInt(date),Integer.parseInt(dateres),dateve,dateresve);
+    }
+
     private void textAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textAccountActionPerformed
 
     }//GEN-LAST:event_textAccountActionPerformed
-     
+    
    
+    private void CerrarVentana(){
+         addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+            System.exit(0);
+            }
+        });
+    }
     
     private void AcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcceptActionPerformed
         String account = textAccount.getText();
@@ -188,6 +220,7 @@ public class Join extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Bienvenido a LOSY.");
             select_interface(control.check_position(account));
+            dispose();
             
         }
         
@@ -236,20 +269,20 @@ public class Join extends javax.swing.JFrame {
     public void select_interface(String Interface) {
          switch (Interface) {
             case "Miembro de laboratorio":
-                Profile_member jfmember = new Profile_member(code);
-                dispose();
+                                dispose();
+                Profile_member jfmember = new Profile_member(code,"Miembro de laboratorio");
                 break;
             case "Director de laboratorio":
-                Profile_Laboratorydirector jfLabdirector = new Profile_Laboratorydirector(code);
                 dispose();
+                Profile_Laboratorydirector jfLabdirector = new Profile_Laboratorydirector(code,"Director de laboratorio");
                 break;
             case "Coordinador de Equipos":
-                Profile_coordinator jfcoordinator = new Profile_coordinator(code);
                 dispose();
+                Profile_coordinator jfcoordinator = new Profile_coordinator(code,"Coordinador de Equipos");
                 break;
             case "Director de proyectos":
-                Profile_proyectdirector jfprodirector = new Profile_proyectdirector(code);
                 dispose();
+                Profile_proyectdirector jfprodirector = new Profile_proyectdirector(code,"Director de proyectos");
                 break;
             default:
                 break;

@@ -19,18 +19,27 @@ public class Loan {
     public int getId() {
         return id;
     }
-
+    
     public void setId(int id) {
         this.id = id;
     }
     private String fechaPrestamo;
     private String fechaDevolucion;
     private String state;
+    private String motivo;
 
     public String getState() {
         return state;
     }
 
+    public String getMotivo(){
+        return motivo;
+    }
+    
+    public void setMotivo(String motivo){
+        this.motivo = motivo;
+    }
+    
     public void setState(String state) {
         this.state = state;
     }

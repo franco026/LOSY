@@ -25,6 +25,7 @@ public class EditProfile extends javax.swing.JPanel {
     User  user = new User();
     DaoUser userDao= new DaoUser();
     private int Code;
+    private boolean inavility;
     
     /**
      * Creates new form EditProfile
@@ -49,7 +50,7 @@ public class EditProfile extends javax.swing.JPanel {
     }
     
     private void deshabiliti_Fields(String Position){
-            if(Position.equals("Miembro de laboratorio")||Position.equals("Coordinador de Equipos")
+             if(Position.equals("Miembro de laboratorio")||Position.equals("Coordinador de Equipos")
                ||Position.equals("Director de proyectos")){
                 textName.setText(user.getName());
                 textName.setEnabled(false);
@@ -89,6 +90,7 @@ public class EditProfile extends javax.swing.JPanel {
                 }
                 textPosition.setEnabled(false);
                 textAnswer.setText(user.getAnswer());
+                inavility=true;
             }else{
                 if(Position.equals("Director de laboratorio")){
                     textName.setText(user.getName());
@@ -105,7 +107,7 @@ public class EditProfile extends javax.swing.JPanel {
                         listQuestion.setSelectedIndex(i);
                     }
                      }
-                
+                    
                     
                     for(int i=0;i<liststate.getItemCount();i++){
                     if(liststate.getItemAt(i).equals(user.getState())){
@@ -125,9 +127,10 @@ public class EditProfile extends javax.swing.JPanel {
                         }
                     }
                     textAnswer.setText(user.getAnswer());
+                    textAnswer.setEnabled(false);
+                    inavility=false;
                 }
             }
-            
     }
 
     /**
@@ -585,9 +588,9 @@ public class EditProfile extends javax.swing.JPanel {
     }//GEN-LAST:event_addUser1ActionPerformed
 
     private void UpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateActionPerformed
-    String name, lastname, email, position, proyect, password,answer,state,question;
+  String name, lastname, email, position, proyect, password,answer,state,question;
     int code, phone, document;
-        if(textAnswer.getText().equals("")){
+        if(textAnswer.getText().equals("")&&inavility==true){
             JOptionPane.showMessageDialog(null, "Escribe tu respuesta secreta");
         }else{
             if(validation.Isphone(textPhone.getText())){

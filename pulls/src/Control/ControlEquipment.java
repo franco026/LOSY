@@ -39,10 +39,10 @@ public class ControlEquipment {
 
     }
     
-    public int  modificar_Estado(String estado, int numEquipo){
+    public int  modificar_Estado(String estado, int numEquip){
         Equipment equipment = new Equipment();        
 
-        equipment.setNumeroEquipo( numEquipo);
+        equipment.setNumeroEquipo(numEquip);
         equipment.setState(estado);
         
         //Se llama al dao para guardar
@@ -77,6 +77,8 @@ public class ControlEquipment {
         return result;
 
     }
+    
+    
     
     
     

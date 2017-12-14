@@ -3,6 +3,8 @@ package Form;
 import Control.ControlEquipment;
 import Control.ControlLoan;
 import Database_access.DaoEquipment;
+import Logic.Equipment;
+import Logic.Loan;
 import Logic.User;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -18,12 +20,11 @@ public class ListEquipment extends javax.swing.JPanel {
     String select;
     String opc;
     String estado;
+    String nombre;
+    private String motivo;
     int numEquipo;
     int marc;
     int key;
-    int count=0;
-    int countyear=0;
-    boolean stop;
     
     public ListEquipment(int code) {
        
@@ -39,6 +40,7 @@ public class ListEquipment extends javax.swing.JPanel {
        
         equipmentDao.consultarEquipo(model);
         jScrollPane1.setViewportView(jTableEquipment);
+        listMotivo.setEnabled(false);
     }
     
 
@@ -57,6 +59,8 @@ public class ListEquipment extends javax.swing.JPanel {
         solicitar = new javax.swing.JRadioButton();
         aceptar = new javax.swing.JButton();
         renovar = new javax.swing.JRadioButton();
+        listMotivo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         jTableEquipment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,7 +93,7 @@ public class ListEquipment extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jTableConsulta);
 
-        jButtonInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/dialog_information.png"))); // NOI18N
+        jButtonInformation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/information.png"))); // NOI18N
         jButtonInformation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonInformationActionPerformed(evt);
@@ -140,6 +144,15 @@ public class ListEquipment extends javax.swing.JPanel {
             }
         });
 
+        listMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Proyectos", "Trabajo de grado", "Otros" }));
+        listMotivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listMotivoMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText("Motivo del Prestamo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,16 +160,23 @@ public class ListEquipment extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(solicitar)
+                            .addComponent(reservar))
+                        .addGap(107, 107, 107)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(listMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addComponent(jScrollPane3)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(solicitar)
                             .addComponent(jLabel1)
-                            .addComponent(jButtonInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(reservar)
-                            .addComponent(aceptar)
-                            .addComponent(renovar))
+                            .addComponent(renovar)
+                            .addComponent(aceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -164,22 +184,30 @@ public class ListEquipment extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
-                .addComponent(solicitar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(reservar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(solicitar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(reservar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)))
                 .addComponent(renovar)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(aceptar)
-                .addContainerGap())
+                .addGap(49, 49, 49))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,63 +247,68 @@ public class ListEquipment extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_reservarActionPerformed
     
-    private int daymonths(int month,int year){
-       
-        switch(month){
-            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                return 31;
-            case 4: case 6: case 9: case 11:
-                return 30;
-            case 2:
-               if ((year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0))){
-                   JOptionPane.showMessageDialog(null, "Feriado");
-                   return 29;
-               }else{
-                   return 28;
-                } 
-            default:
-                return 0;
-                
-        }
-    }
-    
-    private int check_day(int month,int ano,int dev){
-        if(dev>daymonths(month,ano)){
-            month++;
-            count++;
-            int day = dev-daymonths(month,ano);
-            if(month>12){
-                month=0;
-                day = dev-daymonths(month,ano);
-                ano++;
-                countyear++;
-            }
-            if(count>12){
-                    count=0;
-            }
-            return check_day(month,ano,day);
-        }else{
-            JOptionPane.showMessageDialog(null, "Adios"+count);
-            return dev;
-        }
-    }
+ 
     
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-       
+        
         if(solicitar.getLabel().equals(opc)){
             if(estado.equals("Disponible")){
-                JOptionPane.showMessageDialog(null, estado);
                 estado = "Prestado";
                 controlequipment.modificar_Estado(estado, numEquipo);
-                JOptionPane.showMessageDialog(null, estado);
-                DayDev();
+                controloan.DayDev(7,key,numEquipo,motivoSeleccionado());
                 }else{
                  if(estado.equals("Prestado")){
-                       JOptionPane.showMessageDialog(null, estado);
+                      JOptionPane.showMessageDialog(null, estado);
                       JOptionPane.showMessageDialog(null, "El equipo ya se encuentra en prestamo, proceda a reservarlo."); 
                  }else{
-                        if(estado.equals("Reservado")){
-                     JOptionPane.showMessageDialog(null, "El equipo se encuentra reservado.");//pendiente crear reservas
+                        if(estado.equals("Reserva")){
+                            Calendar calendario = new GregorianCalendar();
+                            int dia = calendario.get(Calendar.DATE);
+                            int mes = calendario.get(Calendar.MONTH)+1;
+                            int año = calendario.get(Calendar.YEAR);
+                            String date = dia+""+mes+""+año;
+
+
+                            Loan loan = new Loan();
+                            Equipment equipment = new Equipment();
+                            int diap,mesp,anop,diar,mesr,anor;
+                            String fechar,fechap,disponibilidad,disponilidadP;
+
+                            equipment = equipmentDao.MostrarDatos(equipment,Integer.toString(numEquipo), nombre);
+
+                            disponibilidad = equipment.getState();
+
+                            JOptionPane.showMessageDialog(null,disponibilidad );
+
+                            loan = controloan.Datos(loan, numEquipo);
+
+                            
+
+                            loan = controloan.mostrar_reserva(loan, numEquipo);
+
+                            String fecha_prestamo=loan.getFechaPrestamo();
+                            diap=Integer.parseInt(fecha_prestamo.substring(0,4));
+                            mesp=Integer.parseInt(fecha_prestamo.substring(5,7));
+                            anop=Integer.parseInt(fecha_prestamo.substring(8,10));
+                            fechap=diap+""+mesp+""+anop;
+
+
+                            String fecha_reserva=loan.getFechaDevolucion();
+
+                            diar=Integer.parseInt(fecha_reserva.substring(0,4));
+                            mesr=Integer.parseInt(fecha_reserva.substring(5,7));
+                            anor=Integer.parseInt(fecha_reserva.substring(8,10));
+                            fechar=diar+""+mesr+""+anor;
+                            if((Integer.parseInt(fechar)>Integer.parseInt(date)&&Integer.parseInt(date)>Integer.parseInt(fechap)&&controloan.check_prestamo(loan.getId()))
+                                ||(disponibilidad.equals("Reserva")&&controloan.check_reserva(numEquipo, key)&&controloan.check_prestamo(loan.getId()))){
+                            
+                            estado = "Prestado";
+                            controlequipment.modificar_Estado(estado, numEquipo);
+                            controloan.DayDev(7,key,numEquipo, motivoSeleccionado());
+                            controloan.eliminar_reserva(numEquipo);
+                                
+                            }
+                       JOptionPane.showMessageDialog(null, "El equipo se encuentra reservado.");//pendiente crear reservas
                     }
                 }
             }
@@ -283,18 +316,20 @@ public class ListEquipment extends javax.swing.JPanel {
                 if(reservar.getLabel().equals(opc)){
                 if(estado.equals("Prestado")){
                     String check=estado;
-                    estado = "Reservado";
+                    estado = "Reserva";
                     if(controloan.check_loan(check, numEquipo, key)){
                         JOptionPane.showMessageDialog(null, "Usted posee este articulo");
+                        
                     }else{
-                       int numFilas = controlequipment.modificar_Estado(estado, marc);
-                        JOptionPane.showMessageDialog(null, "Solicitud registrada.");  
+                        controlequipment.modificar_Estado(estado, numEquipo);
+                        controloan.eliminar_limite(numEquipo);
+                        controloan.RenDayDev(10,key,numEquipo);  
                     }
                 }else{
                     if(estado.equals("Disponible")){
                          JOptionPane.showMessageDialog(null, "El equipo se encuentra disponible, proceda a solicitarlo.");
                     }else{
-                        if(estado.equals("Reservado")){
+                        if(estado.equals("Reserva")){
                             JOptionPane.showMessageDialog(null, "El equipo ya se encuentra reservado.");
                         }
                     }
@@ -306,10 +341,10 @@ public class ListEquipment extends javax.swing.JPanel {
                     String check=estado;
                     if(controloan.check_loan(check, numEquipo, key)){
                         JOptionPane.showMessageDialog(null, "2");
-                        RenDayDev();
+                        controloan.RenDayDev(7,key,numEquipo);
                         }
                     }else{
-                          if(estado.equals("Reservado")){
+                          if(estado.equals("Reserva")){
                               JOptionPane.showMessageDialog(null, "Este Equipo se encuentra reservado no puedes renovar el prestamo");
                           }else{
                               JOptionPane.showMessageDialog(null, "Este Equipo esta prestado por alguien mas o esta disponible para solicitar");
@@ -319,147 +354,59 @@ public class ListEquipment extends javax.swing.JPanel {
                     if(estado.equals("Disponible")){
                          JOptionPane.showMessageDialog(null, "El equipo se encuentra disponible, proceda a solicitarlo.");
                     }else{
-                        if(estado.equals("Reservado")){
+                        if(estado.equals("Reserva")){
                             JOptionPane.showMessageDialog(null, "El equipo ya se encuentra reservado y no puedes renovar.");
                         }
                     }
                 }  
             }
         }
-        stop=false;
-        count=0;
-        countyear=0;
     }//GEN-LAST:event_aceptarActionPerformed
     
     
     
-    private void DayDev(){
-    Calendar calendario = new GregorianCalendar();
-    int dia = calendario.get(Calendar.DATE);
-    int mes = calendario.get(Calendar.MONTH)+1;
-    int año = calendario.get(Calendar.YEAR);
-    String date = dia+"-"+mes+"-"+año;
-    calendario.add(Calendar.DAY_OF_MONTH, 7);
-    int diaDevolucion = calendario.get(Calendar.DAY_OF_MONTH);
-    String dateDev = diaDevolucion+"-"+mes+"-"+año;
+ 
     
-    int numFilas2 = controloan.insertarPrestamo(key, numEquipo, marc, date, dateDev);
-    System.out.println("Filas " + numFilas2);
-    if (numFilas2==2) {
-        JOptionPane.showMessageDialog(null, "Prestamo Guardado con Exito");
-    }else{
-        JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el Equipo"); 
-        }
-    count=0;
-    countyear=0;
-    }
-    
-    private void RenDayDev(){
-    Calendar calendario = new GregorianCalendar();
-    User user = new User();
-    int dev=0;
-    int dia = calendario.get(Calendar.DATE);
-    int mes = calendario.get(Calendar.MONTH)+1;
-    int ano = calendario.get(Calendar.YEAR);
-    String date = dia+"-"+mes+"-"+ano;
-    String renovacion = ano+"-"+mes+"-"+dia;
-    int limite = controloan.MostrarLimite(key, numEquipo);
-    
-    
-    controlequipment.modificar_Estado(estado, marc);
-    String fecha=controloan.Mostrarfecha(key, numEquipo);
-    
-    JOptionPane.showMessageDialog(null, fecha.substring(1,4)+"  "+renovacion);
-    
-    if(fecha.equals(renovacion))
-    {
-        JOptionPane.showMessageDialog(null, "No puedes renovar el mismo dia que se presto o mas de una vez por dia");
-    }else{
-        if(limite!=0){
-
-        if((dia+7)>daymonths(mes,ano)){
-            
-            JOptionPane.showMessageDialog(null, "3");
-            int dato = daymonths(mes,ano)-dia;
-            dev = 7-dato;
-            dev = check_day(mes,ano,dev);
-            calendario.add(Calendar.MONTH, count);
-            
-            if((mes==12||countyear>0)&&(dia+7)>daymonths(mes,ano)){
-                
-                calendario.add(Calendar.YEAR,countyear);
-                int mesDevolucion = calendario.get(Calendar.MONDAY)+1;
-                int anoDevolucion = calendario.get(Calendar.YEAR)-1;
-                String dateDev = (dev-1)+"-"+mesDevolucion+"-"+anoDevolucion;
-                JOptionPane.showMessageDialog(null, dateDev);
-                controloan.update_data(dateDev, numEquipo, key);
-                
-                limite--;
-                controloan.reducirlimite(key, numEquipo, date, limite);
-                JOptionPane.showMessageDialog(null, "Solicitud registrada.");
-            }else{
-                
-                if(countyear>0){
-                    
-                    calendario.add(Calendar.YEAR,countyear);
-                    JOptionPane.showMessageDialog(null, dev);
-                    int mesDevolucion = calendario.get(Calendar.MONDAY)+1;
-                    int anoDevolucion = calendario.get(Calendar.YEAR)-1;
-                    String dateDev = (dev-1)+"-"+mesDevolucion+"-"+anoDevolucion;
-                    JOptionPane.showMessageDialog(null, dateDev);
-                    controloan.update_data(dateDev, numEquipo, key);
-                    
-                    limite--;
-                    controloan.reducirlimite(key, numEquipo, date, limite);
-                    JOptionPane.showMessageDialog(null, "Solicitud registrada.");
-                    }
-                }
-       }else{
-            
-            JOptionPane.showMessageDialog(null, "3.1");
-            calendario.add(Calendar.DAY_OF_MONTH, 7);
-            int diaDevolucion = calendario.get(Calendar.DAY_OF_MONTH);
-            String dateDev = (diaDevolucion-1)+"-"+mes+"-"+ano;
-            JOptionPane.showMessageDialog(null, dateDev);
-            controloan.update_data(dateDev, numEquipo, key);
-            
-            limite--;
-            controloan.reducirlimite(key, numEquipo, date, limite);
-            JOptionPane.showMessageDialog(null, "Solicitud registrada.");
-            }
-    }else{
-          JOptionPane.showMessageDialog(null, "has superado el limite de renovacion");
-    }
-    }
-    
-    count=0;
-    countyear=0;
-    }
     private void solicitarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_solicitarMouseClicked
         opc =  solicitar.getLabel();
+        listMotivo.setEnabled(true);
         
     }//GEN-LAST:event_solicitarMouseClicked
 
     private void reservarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reservarMouseClicked
         
         opc = reservar.getLabel();
+        listMotivo.setEnabled(false);
     }//GEN-LAST:event_reservarMouseClicked
 
     private void jTableConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableConsultaMouseClicked
         DefaultTableModel asd = (DefaultTableModel) jTableConsulta.getModel();
         String dato=String.valueOf(asd.getValueAt(jTableConsulta.getSelectedRow(), 4));
         estado = dato;
+        nombre = String.valueOf(asd.getValueAt(jTableConsulta.getSelectedRow(), 1));
         numEquipo = Integer.parseInt(String.valueOf(asd.getValueAt(jTableConsulta.getSelectedRow(), 0)));
         marc = Integer.parseInt(String.valueOf(asd.getValueAt(jTableConsulta.getSelectedRow(), 2)));
     }//GEN-LAST:event_jTableConsultaMouseClicked
 
+    private String motivoSeleccionado(){
+        motivo = listMotivo.getSelectedItem().toString();
+        //JOptionPane.showMessageDialog(null, motivo);
+        
+        return motivo;
+    }
+    
     private void renovarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_renovarMouseClicked
         opc = renovar.getLabel();
+        listMotivo.setEnabled(false);
     }//GEN-LAST:event_renovarMouseClicked
 
     private void renovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_renovarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_renovarActionPerformed
+
+    private void listMotivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMotivoMouseClicked
+        
+    }//GEN-LAST:event_listMotivoMouseClicked
     
   
 
@@ -467,10 +414,12 @@ public class ListEquipment extends javax.swing.JPanel {
     private javax.swing.JButton aceptar;
     private javax.swing.JButton jButtonInformation;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableConsulta;
     private javax.swing.JTable jTableEquipment;
+    private javax.swing.JComboBox<String> listMotivo;
     private javax.swing.ButtonGroup opcion;
     private javax.swing.JRadioButton renovar;
     private javax.swing.JRadioButton reservar;

@@ -107,10 +107,10 @@ public class DaoEquipment {
          catch(Exception e){ System.out.println(e); }
     }
     
-     public void MostrarDatos(Equipment equipment,String number,String nombre){
+     public Equipment MostrarDatos(Equipment equipment,String number,String nombre){
         String sql_select;
         
-        sql_select="SELECT * FROM equipos"
+        sql_select="SELECT * FROM equipos "
                 + " WHERE numero_equipo = '"+number+"' and nombre_equipo = '"+nombre+"'";
         
          try{
@@ -128,13 +128,13 @@ public class DaoEquipment {
                 equipment.setStateequipment(tabla.getString(6));
             }
             
-            
             tabla.close();
             sentencia.close();
+            return equipment;
          }
          catch(SQLException e){ System.out.println(e); }
          catch(Exception e){ System.out.println(e); }
-         
+         return equipment;
     }
 
     
@@ -143,7 +143,7 @@ public class DaoEquipment {
         int numFilas=0;
         String sqlUp=" ";
         sql_select="UPDATE equipos SET estado = '"+ equipment.getState()+
-                "' WHERE numero_equipo= '" + equipment.getNumeroEquipo() + "'";
+                "' WHERE numero_equipo = '" + equipment.getNumeroEquipo() + "'";
         
        try{
             //JOptionPane.showMessageDialog(null, sqlUp);
@@ -166,7 +166,6 @@ public class DaoEquipment {
      public int modificar(Equipment equipment,int numero,String nombre){
         String sql_select;
         int numFilas=0;
-        //JOptionPane.showMessageDialog(null, user.getCode()+" "+code);
         
         sql_select="UPDATE equipos  SET "
                 + "numero_equipo = '"+equipment.getNumeroEquipo()+"', "

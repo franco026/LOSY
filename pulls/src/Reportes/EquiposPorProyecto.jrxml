@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="proyectos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d93c1b45-b2fa-48d0-9799-71eedcb0fd23">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select  numero_equipo, fecha_prestamo, fecha_devolucion
+from prestamo
+where motivo='Proyectos';]]>
+	</queryString>
+	<field name="numero_equipo" class="java.lang.Integer"/>
+	<field name="fecha_prestamo" class="java.sql.Date"/>
+	<field name="fecha_devolucion" class="java.sql.Date"/>
+	<group name="aas">
+		<groupHeader>
+			<band height="33">
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="673743eb-ecf8-4d60-be32-892fa3afa49e"/>
+				</line>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="12" width="185" height="20" forecolor="#FF0000" backcolor="#E6E6E6" uuid="a77f71dd-c124-4e65-bf10-d1e65fe2b410"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[numero_equipo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="185" y="12" width="185" height="20" forecolor="#FF0000" backcolor="#E6E6E6" uuid="d39419a4-50af-46c7-9b0f-7ddddd9a2c5b"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[fecha_prestamo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="370" y="12" width="185" height="20" forecolor="#FF0000" backcolor="#E6E6E6" uuid="af4d0f14-0063-491f-abef-67c15cae0315"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[fecha_devolucion]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="68">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-24" width="595" height="92" backcolor="#FF0000" uuid="222c4564-149b-41f9-ad6a-48301d73d9b7"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="4870b3df-111c-4fa7-b45a-2012a907115e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="41">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="a07c6e30-5ac8-45f8-94cf-a3b6e962a1d6"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="c23dd6c5-f9e2-44f2-90e8-d969e5c2e2d8"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="010db9e4-51e9-45df-83ab-87e0d0b14965"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero_equipo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="3acd400b-cd69-4c8a-b837-a91f7123cb4e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_prestamo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="518a5d61-e265-44c5-8571-ab44c8b912a6"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_devolucion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="548937c8-1ba2-4860-8929-40a0fbd2b94d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="04cbf5a1-f16b-4038-b713-749fc95d0800"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="f4b559d6-8125-4afd-a96e-7d98184fee93"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

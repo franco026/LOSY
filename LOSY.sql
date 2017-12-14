@@ -77,12 +77,21 @@ INSERT INTO proyectos (nombre_proyecto, descripcion, codigo_director,estado) VAL
 INSERT INTO proyectos (nombre_proyecto, descripcion, codigo_director,estado) VALUES ('Prueva 0.1', 'prueba nn', 1234,'Activo');
 INSERT INTO proyectos (nombre_proyecto, descripcion, codigo_director,estado) VALUES ('Mi proyecto', 'Brutal legends', 666,'Activo');
 
+CREATE SEQUENCE multa_seq
+	INCREMENT BY 1
+	NO MAXVALUE
+	NO MINVALUE
+	CACHE 1;
+
 
 DROP TABLE if exists multa cascade;
 CREATE TABLE multa(
+	id Integer NOT NULL,
 	Codigo_Usuario Integer NOT NULL,
 	Valor Integer NOT NULL,
-	Constraint multa_pk primary key(Codigo_Usuario),
+	estado varchar(30),
+	id_prestamo integer NOT NULL,
+	Constraint multa_pk primary key(id),
 	constraint multa_usuario_fk foreign key(Codigo_Usuario) references usuario(codigo)
 );
 
@@ -102,6 +111,7 @@ CREATE TABLE prestamo (
     fecha_prestamo date ,
     fecha_devolucion date ,
     estado varchar(30),
+    motivo varchar(30),
     constraint prestamo_pk primary key(id,codigo_usuario, numero_equipo),
     constraint prestamo_equipos_fk foreign key(numero_equipo) references equipos(numero_equipo),
     constraint prestamo_usuario_fk foreign key(codigo_usuario) references usuario(codigo)
@@ -123,23 +133,16 @@ INSERT INTO cuenta VALUES(879, 'C879N');
 
 DROP TABLE if exists reserva cascade;
 CREATE TABLE reserva(
-	codigo_usuario integer NOT NULL,
+    codigo_usuario integer NOT NULL,
     numero_equipo integer NOT NULL,
+    fecha_inicio date NOT NULL,
     fecha_reserva date NOT NULL,
+    codigo_prestamo integer NOT NULL,
     constraint reserva_pk primary key(codigo_usuario, numero_equipo, fecha_reserva),
     constraint reserva_equipos_fk foreign key(numero_equipo) references equipos(numero_equipo),
     constraint reserva_usuario_fk foreign key(codigo_usuario) references usuario(codigo)
 );
-
-CREATE TABLE reserva(
-	codigo_usuario integer NOT NULL,
-    numero_equipo integer NOT NULL,
-    fecha_reserva date NOT NULL,
-    constraint reserva_pk primary key(codigo_usuario, numero_equipo, fecha_reserva),
-    constraint reserva_equipos_fk foreign key(numero_equipo) references equipos(numero_equipo),
-    constraint reserva_usuario_fk foreign key(codigo_usuario) references usuario(codigo)
-);
-
+DROP TABLE if exists limite_renovar cascade;
 CREATE TABLE limite_renovar(
 	codigo_usuario integer NOT NULL,
     numero_equipo integer NOT NULL,

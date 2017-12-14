@@ -311,7 +311,6 @@ public class DaoUser {
     public int modificar(User user,int code){
         String sql_select;
         int numFilas=0;
-        JOptionPane.showMessageDialog(null, user.getCode()+" "+code);
         sql_select="UPDATE usuario  SET "
                 + "codigo = '"+user.getCode()+"',"
                 + "respuesta = '"+user.getAnswer()+"', "

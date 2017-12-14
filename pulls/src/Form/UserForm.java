@@ -101,6 +101,11 @@ public class UserForm extends javax.swing.JPanel {
         position.setText("Cargo:");
 
         textPosition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Miembro de laboratorio", "Director de laboratorio", "Coordinador de Equipos", "Director de proyectos" }));
+        textPosition.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textPositionActionPerformed(evt);
+            }
+        });
 
         proyect.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         proyect.setText("A que proyecto pertenece:");
@@ -373,6 +378,10 @@ public class UserForm extends javax.swing.JPanel {
     private void textCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCodeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textCodeActionPerformed
+
+    private void textPositionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPositionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPositionActionPerformed
     
          
     public String PasswordDefault(String Name, String LastName, String Code) {

@@ -9,7 +9,7 @@ public class FacadeBD {
     Statement instruccion;
     ResultSet tabla;
 
-    FacadeBD() {
+    public FacadeBD() {
         url="jdbc:postgresql://localhost:5433/losy";
         usuario = "postgres";
         password = "3271586+";

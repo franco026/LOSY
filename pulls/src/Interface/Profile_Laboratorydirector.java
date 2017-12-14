@@ -1,6 +1,8 @@
 package Interface;
 
 import Control.ControlUser;
+import Database_access.DaoLoan;
+import Form.Devolution;
 import Form.EditEquipment;
 import Form.EditProfile;
 import Form.EquipmentForm;
@@ -15,15 +17,20 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
 
     EquipmentForm jifEquipmentForm = new EquipmentForm();
     ControlUser control = new ControlUser();
+    DaoLoan loanDao = new DaoLoan();
     private int code;
+    private String Profile;
     
-    public Profile_Laboratorydirector(int code) {
+        public Profile_Laboratorydirector(int code,String Profile) {
         this.code=code;
+        this.Profile=Profile;
         Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension ventana = this.getSize();
         this.setLocation((pantalla.width - ventana.width) / 4 , (pantalla.height - ventana.height) / 4 ); 
         setVisible(true);
         initComponents();
+        loanDao.multas(code);
+        loanDao.equiposatrasados(code);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,16 +43,21 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         panelInferior = new javax.swing.JPanel();
         logoUVInferior = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         EditProfile = new javax.swing.JButton();
-        EquipmentLoan = new javax.swing.JButton();
         Proyects = new javax.swing.JButton();
         Equipment = new javax.swing.JButton();
         Registration = new javax.swing.JButton();
         EditEquipment = new javax.swing.JButton();
         Newmember = new javax.swing.JButton();
         Members = new javax.swing.JButton();
-        EditMembers = new javax.swing.JButton();
         panelResultOperation = new javax.swing.JPanel();
+        Welcome = new javax.swing.JLabel();
+        Devolucion1 = new javax.swing.JButton();
         Option = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
         Signoff = new javax.swing.JMenuItem();
@@ -69,19 +81,58 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
 
         logoUVInferior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/LogoInferior.PNG"))); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Universidad del Valle:");
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Cali - Colombia");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Dirección:");
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Ciudad Universitaria Meléndez");
+
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Calle 13 # 100-00");
+
         javax.swing.GroupLayout panelInferiorLayout = new javax.swing.GroupLayout(panelInferior);
         panelInferior.setLayout(panelInferiorLayout);
         panelInferiorLayout.setHorizontalGroup(
             panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelInferiorLayout.createSequentialGroup()
-                .addComponent(logoUVInferior)
+                .addComponent(logoUVInferior, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel4))
+                .addGap(28, 28, 28)
+                .addGroup(panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelInferiorLayout.setVerticalGroup(
             panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoUVInferior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelInferiorLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(logoUVInferior))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap())
         );
 
         EditProfile.setText("Editar Perfil");
@@ -90,8 +141,6 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                 EditProfileActionPerformed(evt);
             }
         });
-
-        EquipmentLoan.setText("Solicitar Equipo");
 
         Proyects.setText("Proyectos");
         Proyects.addActionListener(new java.awt.event.ActionListener() {
@@ -135,18 +184,33 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
             }
         });
 
-        EditMembers.setText("Editar Miembros");
+        panelResultOperation.setPreferredSize(new java.awt.Dimension(487, 469));
+
+        Welcome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fondo.jpg"))); // NOI18N
 
         javax.swing.GroupLayout panelResultOperationLayout = new javax.swing.GroupLayout(panelResultOperation);
         panelResultOperation.setLayout(panelResultOperationLayout);
         panelResultOperationLayout.setHorizontalGroup(
             panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultOperationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Welcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelResultOperationLayout.setVerticalGroup(
             panelResultOperationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelResultOperationLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Welcome, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        Devolucion1.setText("Devolucion");
+        Devolucion1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Devolucion1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -160,19 +224,18 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                         .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EditProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EquipmentLoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Proyects, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Equipment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Registration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EditEquipment, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Newmember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EditMembers, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Devolucion1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(30, 30, 30)
-                        .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFondoLayout.createSequentialGroup()
                         .addComponent(logoUV)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(logoLaboratorio)))
                 .addGap(27, 27, 27))
         );
@@ -191,8 +254,6 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(EditProfile)
                         .addGap(18, 18, 18)
-                        .addComponent(EquipmentLoan)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Proyects)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Equipment)
@@ -205,12 +266,13 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Members)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EditMembers)
-                        .addGap(0, 19, Short.MAX_VALUE))
-                    .addComponent(panelResultOperation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(panelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Devolucion1))
+                    .addComponent(panelResultOperation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelInferior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        panelResultOperation.getAccessibleContext().setAccessibleName("");
 
         Menu.setText("Menu");
 
@@ -334,18 +396,28 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
         editequipment.setSize(614, 450);
         editequipment .setLocation(0,0);
         panelResultOperation.removeAll();
+        
         panelResultOperation.add(editequipment , null);
         panelResultOperation.revalidate();
         panelResultOperation.repaint();
         
     }//GEN-LAST:event_EditEquipmentActionPerformed
 
+    private void Devolucion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Devolucion1ActionPerformed
+        Devolution devolutiont = new Devolution(Profile,code);
+        devolutiont.setSize(614, 450);
+        devolutiont.setLocation(0,0);
+        panelResultOperation.removeAll();
+        panelResultOperation.add(devolutiont , null);
+        panelResultOperation.revalidate();
+        panelResultOperation.repaint();
+    }//GEN-LAST:event_Devolucion1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Devolucion1;
     private javax.swing.JButton EditEquipment;
-    private javax.swing.JButton EditMembers;
     private javax.swing.JButton EditProfile;
     private javax.swing.JButton Equipment;
-    private javax.swing.JButton EquipmentLoan;
     private javax.swing.JMenuItem Exit;
     private javax.swing.JMenuItem Guide;
     private javax.swing.JMenu Help;
@@ -356,7 +428,13 @@ public class Profile_Laboratorydirector extends javax.swing.JFrame {
     private javax.swing.JButton Proyects;
     private javax.swing.JButton Registration;
     private javax.swing.JMenuItem Signoff;
+    private javax.swing.JLabel Welcome;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel logoLaboratorio;
     private javax.swing.JLabel logoUV;
     private javax.swing.JLabel logoUVInferior;

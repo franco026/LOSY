@@ -34,11 +34,10 @@ public class EditEquipment extends javax.swing.JPanel {
      */
     public EditEquipment() {
         initComponents();
-        
         DefaultTableModel model;
         model = new DefaultTableModel();
         jTableEquipment.setModel(model);
-        jTableEquipment.setModel(model);
+         jTableEquipment.setModel(model);
         model.addColumn("Numero_equipo");
         model.addColumn("Nombre_equipo");
         jTableEquipment.getTableHeader().setReorderingAllowed(false);
@@ -48,7 +47,6 @@ public class EditEquipment extends javax.swing.JPanel {
     private void Fields(){
         textNameEquipment.setText(equipment.getEquipmentName());
         textNumberEquipment.setText(Integer.toString(equipment.getNumeroEquipo()));
-        numero=equipment.getNumeroEquipo();
         textSerial.setText(Integer.toString(equipment.getMake()));
         textDescription.setText(equipment.getDescription());
          for(int i=0;i<State.getItemCount();i++){
@@ -138,7 +136,7 @@ public class EditEquipment extends javax.swing.JPanel {
             }
         });
 
-        listState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Prestado", "Reservado" }));
+        listState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Prestado", "Reservado", "Prestado y en reserva" }));
 
         State.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
         State.addActionListener(new java.awt.event.ActionListener() {
@@ -354,10 +352,9 @@ public class EditEquipment extends javax.swing.JPanel {
     private void stateloan(String state,int code){
         if(state.equals("Disponible")){
             controlloal.ModificarEstado(state, code);
-            controlloal.eliminar_limites(numero);
         }
         
-    } 
+    }    
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String name,descripcion,state,liststate;

@@ -4,6 +4,15 @@ public class Fine {
 
     private int userCode;
     private int value;
+    private String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public Fine(){
 

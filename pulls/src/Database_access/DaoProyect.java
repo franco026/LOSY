@@ -100,7 +100,6 @@ public class DaoProyect {
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();JOptionPane.showMessageDialog(null, "sfasd");
             numFilas = sentencia.executeUpdate(sql_guardar);
-            JOptionPane.showMessageDialog(null, "Pro");
             System.out.println("up " + numFilas);
             
             return numFilas;
@@ -132,7 +131,6 @@ public class DaoProyect {
        try{
             Connection conn= fachada.getConnetion();
             Statement sentencia = conn.createStatement();
-            JOptionPane.showMessageDialog(null, sql_select);
             numFilas = sentencia.executeUpdate(sql_select);            
             System.out.println("up " + numFilas);
             return numFilas;
@@ -181,7 +179,6 @@ public class DaoProyect {
             Statement sentencia = conn.createStatement();
 
             ResultSet tabla = sentencia.executeQuery(sql_select);
-            JOptionPane.showMessageDialog(null,sql_select);
             
             while(tabla.next()){
                 proyect.setId(tabla.getInt(1));
